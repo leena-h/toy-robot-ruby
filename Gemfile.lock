@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  minitest (~> 5.0)
+
+BUNDLED WITH
+   1.17.2

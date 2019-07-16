@@ -1,5 +1,5 @@
 class Position
-  attr_reader :x_coordinate, :y_coordinate, :direction
+  attr_reader :x, :y, :direction
 
   DIRECTION = {
     north: 0,
@@ -8,9 +8,9 @@ class Position
     south: 3
   }.freeze
 
-  def initialize(x_coordinate:, y_coordinate:, direction: DIRECTION[:north])
-    @x_coordinate = x_coordinate
-    @y_coordinate = y_coordinate
+  def initialize(x: 0, y: 0, direction: DIRECTION[:north])
+    @x = x
+    @y = y
     @direction = direction
   end
 
@@ -35,21 +35,17 @@ class Position
   def move
     case @direction
     when DIRECTION[:north]
-      @y_coordinate += 1
+      @y += 1
     when DIRECTION[:east]
-      @x_coordinate += 1
+      @x += 1
     when DIRECTION[:south]
-      @y_coordinate -= 1
+      @y -= 1
     when DIRECTION[:west]
-      @x_coordinate -= 1
+      @x -= 1
     end
   end
 
   def report
-    Position.new(
-      x_coordinate: @x_coordinate,
-      y_coordinate: @y_coordinate,
-      direction: @direction
-    )
+    Position.new(x: @x, y: @y, direction: @direction)
   end
 end

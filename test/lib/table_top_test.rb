@@ -13,6 +13,6 @@ class TableTopTest < Minitest::Test
   end
 
   def test_determines_within_bounds_correctly
-    refute @instance.within_boundaries?(x_coordinate: 6, y_coordinate: 6)
+    refute @instance.within_boundaries?(x: 6, y: 6)
   end
 end

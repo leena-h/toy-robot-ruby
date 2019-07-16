@@ -23,9 +23,17 @@ class PositionTest < Minitest::Test
     assert_equal(expected, result)
   end
 
-  def test_able_to_move_back
-  end
+  def test_able_to_move_correctly
+    @instance.move  # Move up north 1 (x: 0, y: 1)
+    @instance.move  # Move up north 1 (x: 0, y: 2)
+    @instance.right # Face east
+    @instance.move  # Move right (x: 1, y: 2)
+    @instance.move  # Move right (x: 2, y: 2)
 
-  def test_able_to_move_forward
+    expected = Position.new(x: 2, y: 2, direction: Position::DIRECTION[:east])
+    result = @instance.report
+    assert_equal(expected.x, result.x)
+    assert_equal(expected.y, result.y)
+    assert_equal(expected.direction, result.direction)
   end
 end

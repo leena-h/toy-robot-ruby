@@ -1,4 +1,3 @@
-require 'pry'
 require_relative 'lib/position'
 require_relative 'lib/table_top'
 require_relative 'lib/toy_robot'
@@ -39,6 +38,7 @@ class Cli
 
   def place_command(input)
     inputs = input.split(/[\s,]+/)
+
     if is_place_command_valid?(inputs)
       x_coordinate = inputs[1].to_i
       y_coordinate = inputs[2].to_i

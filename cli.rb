@@ -78,7 +78,6 @@ class Cli
   end
 
   def is_place_command_valid?(inputs)
-    valid_directions = Position::DIRECTION.keys
     inputs.size == 4 && # Provided 4 arguments
     !(Position::DIRECTION[inputs[3]&.downcase&.to_sym].nil?) # Provided valid direction
   end

@@ -39,20 +39,20 @@ class Cli
 
   def place_command(input)
     inputs = input.split(/[\s,]+/)
-    x_coordinate = inputs[1].to_i
-    y_coordinate = inputs[2].to_i
-    direction = inputs[3].downcase.to_sym
-    position =
-      Position.new(
-        x: x_coordinate,
-        y: y_coordinate,
-        direction: Position::DIRECTION[direction]
-      )
-    @toy_robot =
-      ToyRobot.new(
-        table_top: @table_top,
-        position: position
-      )
+    if is_place_command_valid?(inputs)
+      x_coordinate = inputs[1].to_i
+      y_coordinate = inputs[2].to_i
+      direction = inputs[3].downcase.to_sym
+      position =
+        Position.new(
+          x: x_coordinate,
+          y: y_coordinate,
+          direction: Position::DIRECTION[direction])
+      @toy_robot =
+        ToyRobot.new(
+          table_top: @table_top,
+          position: position)
+    end
   end
 
   def left_command(input)
@@ -75,6 +75,12 @@ class Cli
     result = @toy_robot.report
     direction = Position::DIRECTION.key(result.direction)
     puts [result.x, result.y, direction.upcase].join(',')
+  end
+
+  def is_place_command_valid?(inputs)
+    valid_directions = Position::DIRECTION.keys
+    inputs.size == 4 && # Provided 4 arguments
+    !(Position::DIRECTION[inputs[3]&.downcase&.to_sym].nil?) # Provided valid direction
   end
 end
 

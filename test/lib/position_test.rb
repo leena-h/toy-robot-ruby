@@ -18,13 +18,13 @@ class PositionTest < Minitest::Test
   def test_able_to_move_left_to_change_direction
     expected = Position::DIRECTION[:west]
     result = @instance.left
-    assert_equal(expected, result)
+    assert_equal(expected, result.direction)
   end
 
   def test_able_to_move_right_to_change_direction
     expected = Position::DIRECTION[:east]
     result = @instance.right
-    assert_equal(expected, result)
+    assert_equal(expected, result.direction)
   end
 
   def test_able_to_move_correctly

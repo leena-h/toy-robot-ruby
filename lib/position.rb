@@ -4,8 +4,8 @@ class Position
   DIRECTION = {
     north: 0,
     east: 1,
-    west: 2,
-    south: 3
+    south: 2,
+    west: 3
   }.freeze
 
   def initialize(x: 0, y: 0, direction: DIRECTION[:north])
@@ -16,20 +16,22 @@ class Position
 
   def left
     @direction =
-      unless @direction == DIRECTION[:north]
-        @direction += 1
+      if @direction != DIRECTION[:north]
+        @direction -= 1
       else
         DIRECTION[:west]
       end
+    report
   end
 
   def right
     @direction =
-      unless @direction == DIRECTION[:west]
+      if @direction < DIRECTION[:west]
         @direction += 1
       else
         DIRECTION[:north]
       end
+    report
   end
 
   def move
@@ -43,6 +45,7 @@ class Position
     when DIRECTION[:west]
       @x -= 1
     end
+    report
   end
 
   def report

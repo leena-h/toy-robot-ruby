@@ -125,8 +125,3 @@ REPORT
 ```
 
 Output: *3,3,NORTH*
-
-Deliverables:
-The source files, the test data and any test code.
-It is not required to provide any graphical output showing the movement of the toy robot.
--------
